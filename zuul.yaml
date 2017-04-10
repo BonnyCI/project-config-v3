@@ -15,6 +15,28 @@
       gerrithub:
         verified: -1
 
+- pipeline:
+    name: gerrithub_gate
+    manager: dependent
+    success-message: Build succeeded (gate).
+    source: gerrithub
+    trigger:
+      gerrithub:
+        - event: comment-added
+          approval:
+            - approved: 1
+    success:
+      gerrithub:
+        verified: 2
+        submit: true
+    failure:
+      gerrithub:
+        verified: -2
+    start:
+      gerrithub:
+        verified: 0
+    precedence: high
+
 - job:
     name: base
     pre-run: base-pre
@@ -31,4 +53,6 @@
 - project:
     name: BonnyCI/sandbox-v3
     gerrithub_check:
+      jobs: []
+    gerrithub_gate:
       jobs: []
