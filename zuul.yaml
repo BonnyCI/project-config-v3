@@ -32,3 +32,8 @@
     name: BonnyCI/sandbox-v3
     gerrithub_check:
       jobs: []
+
+- project:
+    name: BonnyCI/project-config-v3
+    gerrithub_check:
+      jobs: []
