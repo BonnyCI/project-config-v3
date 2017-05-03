@@ -20,13 +20,11 @@
     allow-secrets: True
     trigger:
       github:
-        - event: pull_request
-          action:
-            - opened
-            - changed
-            - reopened
-        - event: pull_request
-          action: comment
+        - event:
+            - pr-open
+            - pr-change
+            - pr-reopen
+        - event: pr-comment
           comment: (?i)^\s*recheck\s*$
     start:
       github:
